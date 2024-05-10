@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="gticsf.html::cabecera(${tipo})"></head>
+<body>
+<nav th:replace="gticsf.html::navbar('tecnicos')"></nav>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form action="/guardarTecnico" method="post" th:object="${tecnico}">
+            <input type="hidden" name="id" th:value="*{id}">
+            <input type="hidden" name="tipo" th:value="${tipo}">
+            <div class="row">
+                <label for="firstName">Nombre: </label>
+                <input th:classappend="${#fields.hasErrors('firstName')?'is-invalid':''}" th:field="*{firstName}" type="text">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            </div>
+            <div class="row">
+                <label for="lastName">Apellido: </label>
+                <input th:classappend="${#fields.hasErrors('lastName')?'is-invalid':''}" th:field="*{lastName}" type="text">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </div>
+            <div class="row">
+                <label for="dni">DNI: </label>
+                <input th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}" th:field="*{dni}" type="text">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+            </div>
+            <div class="row">
+                <label for="phone">Teléfono: </label>
+                <input th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}" th:field="*{phone}" type="text">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+            </div>
+            <div class="row">
+                <label for="age">Edad: </label>
+                <input th:classappend="${#fields.hasErrors('age')?'is-invalid':''}" th:field="*{age}" type="text">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <button type="submit" class="btn btn-secondary" th:text="${tipo}"></button>
+                    <a class="btn btn-danger" href="/tecnicos">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

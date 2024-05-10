@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="gticsf.html::cabecera('Técnicos')">
+</head>
+<body>
+    <nav th:replace="gticsf.html::navbar('tecnicos')"></nav>
+    <h2>Técnicos</h2>
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <a class="btn btn-success" href="/registrarTecnico">Registrar técnico</a>
+        </div>
+    </div>
+    <div class="alert alert-success" th:if="${confirmacion!=null}" th:text="${confirmacion}"></div>
+    <table style="width: 100%">
+        <thead class="bg-primary">
+        <tr>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>DNI</td>
+            <td>Teléfono</td>
+            <td>Edad</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody class="bg-primary-light">
+        <tr th:each="tecnico:${listaTecnicos}">
+            <td th:text="${tecnico.id}"></td>
+            <td th:text="${tecnico.firstName}"></td>
+            <td th:text="${tecnico.lastName}"></td>
+            <td th:text="${tecnico.dni}"></td>
+            <td th:text="${tecnico.phone}"></td>
+            <td th:text="${tecnico.age}"></td>
+            <td><a class="btn btn-info" th:href="|/editarTecnico?id=${tecnico.id}|">Editar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="gticsf.html::cabecera('Estadísticas - sitios')">
+</head>
+<body>
+<nav th:replace="gticsf.html::navbar('estadisticas')"></nav>
+<h2>Estadísticas - sitios</h2>
+<table style="width: 100%;">
+    <thead class="bg-primary">
+    <tr>
+        <td>Sitio</td>
+        <td>Cantidad de intervenciones</td>
+    </tr>
+    </thead>
+    <tbody class="bg-primary-light">
+    <tr th:each="dto:${listaIntervencionesPorSitio}">
+        <td th:text="${dto.getSitio()}"></td>
+        <td th:text="${dto.getCantidadIntervenciones()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
